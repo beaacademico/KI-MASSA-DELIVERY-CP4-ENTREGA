@@ -1,5 +1,7 @@
 package br.com.kimassa;
 
+import java.util.Scanner;
+
 import br.com.kimassa.model.Cliente;
 import br.com.kimassa.model.Entregador;
 import br.com.kimassa.model.Pedido;
@@ -12,53 +14,180 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Cliente cliente =
-                new Cliente(
-                        1,
-                        "Beatriz",
-                        "Rua Central",
-                        "11999999999");
-
-        Produto produto =
-                new Produto(
-                        1,
-                        "Pizza Calabresa",
-                        55.0,
-                        20);
-
-        Pedido pedido =
-                new Pedido(
-                        1,
-                        cliente,
-                        produto,
-                        2);
-
-        produto.diminuirEstoque(2);
+        Scanner sc = new Scanner(System.in);
 
         CalculadoraPedido calc =
                 new CalculadoraPedido();
 
-        calc.mostrarResumo(pedido);
-
-        Entregador entregador =
-                new Entregador(
-                        1,
-                        "Carlos",
-                        "Moto",
-                        true);
-
         GerenciadorEntrega gerenciador =
                 new GerenciadorEntrega();
 
-        gerenciador.atribuirEntregador(
-                pedido,
-                entregador);
+        Pedido pedido = null;
 
-        pedido.exibirPedido();
+        int opcao = 0;
 
-        System.out.println("\n=== HISTÓRICO ===");
+        while (opcao != 5) {
 
-        System.out.println(
-                pedido.obterHistorico());
+            System.out.println("\n===== KI MASSA =====");
+            System.out.println("1 - Criar pedido");
+            System.out.println("2 - Atualizar status");
+            System.out.println("3 - Ver pedido");
+            System.out.println("4 - Ver histórico");
+            System.out.println("5 - Sair");
+
+            System.out.print("Escolha uma opção: ");
+            opcao = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcao) {
+
+                case 1:
+
+                    System.out.println("\n=== NOVO PEDIDO ===");
+
+                    System.out.print("Nome do cliente: ");
+                    String nome = sc.nextLine();
+
+                    System.out.print("Endereço: ");
+                    String endereco = sc.nextLine();
+
+                    System.out.print("Telefone: ");
+                    String telefone = sc.nextLine();
+
+                    Cliente cliente =
+                            new Cliente(
+                                    1,
+                                    nome,
+                                    endereco,
+                                    telefone);
+
+                    System.out.print("Nome do produto: ");
+                    String nomeProduto = sc.nextLine();
+
+                    System.out.print("Preço do produto: ");
+                    double preco = sc.nextDouble();
+
+                    System.out.print("Quantidade em estoque: ");
+                    int estoque = sc.nextInt();
+
+                    Produto produto =
+                            new Produto(
+                                    1,
+                                    nomeProduto,
+                                    preco,
+                                    estoque);
+
+                    System.out.print("Quantidade do pedido: ");
+                    int quantidade = sc.nextInt();
+                    sc.nextLine();
+
+                    pedido =
+                            new Pedido(
+                                    1,
+                                    cliente,
+                                    produto,
+                                    quantidade);
+
+                    produto.diminuirEstoque(quantidade);
+
+                    calc.mostrarResumo(pedido);
+
+                    Entregador entregador =
+                            new Entregador(
+                                    1,
+                                    "Carlos",
+                                    "Moto",
+                                    true);
+
+                    gerenciador.atribuirEntregador(
+                            pedido,
+                            entregador);
+
+                    System.out.println("\nPedido criado com sucesso!");
+
+                    break;
+
+                case 2:
+
+                    if (pedido == null) {
+
+                        System.out.println("\nNenhum pedido criado.");
+                        break;
+                    }
+
+                    System.out.println("\n=== ATUALIZAR STATUS ===");
+
+                    System.out.println("1 - Em preparo");
+                    System.out.println("2 - Saiu para entrega");
+                    System.out.println("3 - Entregue");
+
+                    System.out.print("Escolha: ");
+                    int status = sc.nextInt();
+                    sc.nextLine();
+
+                    switch (status) {
+
+                        case 1:
+                            pedido.atualizarStatus("Em preparo");
+                            break;
+
+                        case 2:
+                            pedido.atualizarStatus("Saiu para entrega");
+                            break;
+
+                        case 3:
+                            pedido.atualizarStatus("Entregue");
+                            break;
+
+                        default:
+                            System.out.println("Status inválido.");
+                    }
+
+                    System.out.println("Status atualizado!");
+
+                    break;
+
+                case 3:
+
+                    if (pedido == null) {
+
+                        System.out.println("\nNenhum pedido criado.");
+                        break;
+                    }
+
+                    System.out.println("\n=== DADOS DO PEDIDO ===");
+
+                    pedido.exibirPedido();
+
+                    break;
+
+                case 4:
+
+                    if (pedido == null) {
+
+                        System.out.println("\nNenhum pedido criado.");
+                        break;
+                    }
+
+                    System.out.println("\n=== HISTÓRICO ===");
+
+                    System.out.println(
+                            pedido.obterHistorico());
+
+                    break;
+
+                case 5:
+
+                    System.out.println("\nSistema encerrado.");
+
+                    break;
+
+                default:
+
+                    System.out.println("\nOpção inválida.");
+            }
+        }
+
+        sc.close();
     }
 }
