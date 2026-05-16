@@ -6,17 +6,9 @@ public class CalculadoraPedido {
 
     public void mostrarResumo(Pedido pedido) {
 
-        System.out.println("=== RESUMO PEDIDO ===");
+        System.out.println(
+                "\n=== RESUMO FINANCEIRO ===");
 
         pedido.exibirPedido();
-
-        System.out.println("Taxa entrega: R$ "
-                + pedido.calcularTaxaEntrega());
-
-        System.out.println("Desconto: R$ "
-                + pedido.calcularDesconto());
-
-        System.out.println("Valor final: R$ "
-                + pedido.calcularValorFinal());
     }
 }
