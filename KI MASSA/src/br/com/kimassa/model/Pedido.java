@@ -92,11 +92,14 @@ public class Pedido implements Auditavel, Calculavel {
 
         this.status = novoStatus;
 
-        registrarLog("Status atualizado para: "
-                + novoStatus);
+        registrarLog(
+                "Status atualizado para: "
+                        + novoStatus);
     }
 
     public void exibirPedido() {
+
+        System.out.println("\n===== RESUMO PEDIDO =====");
 
         System.out.println("Pedido: " + id);
 
@@ -112,11 +115,33 @@ public class Pedido implements Auditavel, Calculavel {
         System.out.println("Status: "
                 + status);
 
+        System.out.println("Taxa entrega: R$ "
+                + calcularTaxaEntrega());
+
+        System.out.println("Desconto: R$ "
+                + calcularDesconto());
+
         System.out.println("Valor final: R$ "
                 + calcularValorFinal());
     }
 
     public int getId() {
         return id;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public String getStatus() {
+        return status;
     }
 }
