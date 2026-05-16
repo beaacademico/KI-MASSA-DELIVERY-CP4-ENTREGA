@@ -15,12 +15,18 @@ public class GerenciadorEntrega {
 
             entregador.setDisponivel(false);
 
+            pedido.setEntregador(entregador);
+
             pedido.atualizarStatus(
                     "Saiu para entrega");
 
             System.out.println(
-                    "Entregador atribuído: "
+                    "Entregador atribuido: "
                             + entregador.getNome());
+
+            System.out.println(
+                    "Veiculo: "
+                            + entregador.getVeiculo());
 
             System.out.println(
                     "Pedido saiu para entrega!");
@@ -28,7 +34,7 @@ public class GerenciadorEntrega {
         } else {
 
             System.out.println(
-                    "Entregador indisponível!");
+                    "Entregador indisponivel!");
         }
     }
 }
