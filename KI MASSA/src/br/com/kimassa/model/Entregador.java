@@ -1,6 +1,10 @@
 package br.com.kimassa.model;
 
-public class Entregador {
+import java.io.Serializable;
+
+public class Entregador implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private int id;
     private String nome;
@@ -17,11 +21,17 @@ public class Entregador {
         this.veiculo = veiculo;
         this.disponivel = disponivel;
     }
+
     public int getId() {
         return id;
     }
+
     public String getNome() {
         return nome;
+    }
+
+    public String getVeiculo() {
+        return veiculo;
     }
 
     public boolean isDisponivel() {
@@ -34,8 +44,17 @@ public class Entregador {
 
     public void exibirEntregador() {
 
-        System.out.println("Entregador: " + nome);
-        System.out.println("Veículo: " + veiculo);
-        System.out.println("Disponível: " + disponivel);
+        System.out.println("\n=== ENTREGADOR ===");
+
+        System.out.println("ID: " + id);
+
+        System.out.println("Nome: "
+                + nome);
+
+        System.out.println("Veiculo: "
+                + veiculo);
+
+        System.out.println("Disponivel: "
+                + disponivel);
     }
 }
