@@ -34,20 +34,22 @@ public class Produto {
         return estoque;
     }
 
-    public void diminuirEstoque(int quantidade) {
+    public boolean diminuirEstoque(int quantidade) {
 
         if (quantidade > estoque) {
 
             System.out.println(
                     "Estoque insuficiente!");
 
-            return;
+            return false;
         }
 
         estoque -= quantidade;
 
         System.out.println(
                 "Estoque atualizado com sucesso!");
+
+        return true;
     }
 
     public void exibirProduto() {
@@ -59,7 +61,7 @@ public class Produto {
         System.out.println("Produto: "
                 + nome);
 
-        System.out.println("Preço: R$ "
+        System.out.println("Preco: R$ "
                 + preco);
 
         System.out.println("Estoque: "
