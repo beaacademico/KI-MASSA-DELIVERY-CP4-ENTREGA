@@ -144,4 +144,14 @@ public class Pedido implements Auditavel, Calculavel {
     public String getStatus() {
         return status;
     }
+
+    public void setEntregador(Entregador entregador) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setEntregador'");
+    }
+
+    public Entregador getEntregador() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getEntregador'");
+    }
 }
