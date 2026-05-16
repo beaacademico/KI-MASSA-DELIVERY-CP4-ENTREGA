@@ -36,14 +36,33 @@ public class Produto {
 
     public void diminuirEstoque(int quantidade) {
 
+        if (quantidade > estoque) {
+
+            System.out.println(
+                    "Estoque insuficiente!");
+
+            return;
+        }
+
         estoque -= quantidade;
+
+        System.out.println(
+                "Estoque atualizado com sucesso!");
     }
 
     public void exibirProduto() {
 
+        System.out.println("\n=== PRODUTO ===");
+
         System.out.println("ID: " + id);
-        System.out.println("Produto: " + nome);
-        System.out.println("Preço: R$ " + preco);
-        System.out.println("Estoque: " + estoque);
+
+        System.out.println("Produto: "
+                + nome);
+
+        System.out.println("Preço: R$ "
+                + preco);
+
+        System.out.println("Estoque: "
+                + estoque);
     }
 }
