@@ -14,8 +14,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.setProperty("file.encoding", "UTF-8");
-
         Scanner sc = new Scanner(System.in);
 
         CalculadoraPedido calc =
@@ -35,10 +33,10 @@ public class Main {
             System.out.println("1 - Criar pedido");
             System.out.println("2 - Atualizar status");
             System.out.println("3 - Ver pedido");
-            System.out.println("4 - Ver histórico");
+            System.out.println("4 - Ver historico");
             System.out.println("5 - Sair");
 
-            System.out.print("Escolha uma opção: ");
+            System.out.print("Escolha uma opcao: ");
 
             opcao = sc.nextInt();
             sc.nextLine();
@@ -52,7 +50,7 @@ public class Main {
                     System.out.print("Nome do cliente: ");
                     String nome = sc.nextLine();
 
-                    System.out.print("Endereço: ");
+                    System.out.print("Endereco: ");
                     String endereco = sc.nextLine();
 
                     System.out.print("Telefone: ");
@@ -68,7 +66,7 @@ public class Main {
                     System.out.print("Nome do produto: ");
                     String nomeProduto = sc.nextLine();
 
-                    System.out.print("Preço do produto: ");
+                    System.out.print("Preco do produto: ");
                     double preco = sc.nextDouble();
 
                     System.out.print("Quantidade em estoque: ");
@@ -85,14 +83,23 @@ public class Main {
                     int quantidade = sc.nextInt();
                     sc.nextLine();
 
+                    boolean estoqueOk =
+                            produto.diminuirEstoque(quantidade);
+
+                    if (!estoqueOk) {
+
+                        System.out.println(
+                                "\nPedido cancelado por falta de estoque.");
+
+                        break;
+                    }
+
                     pedido =
                             new Pedido(
                                     1,
                                     cliente,
                                     produto,
                                     quantidade);
-
-                    produto.diminuirEstoque(quantidade);
 
                     calc.mostrarResumo(pedido);
 
@@ -160,7 +167,7 @@ public class Main {
                         default:
 
                             System.out.println(
-                                    "Status inválido.");
+                                    "Status invalido.");
                     }
 
                     System.out.println(
@@ -196,7 +203,7 @@ public class Main {
                     }
 
                     System.out.println(
-                            "\n=== HISTÓRICO ===");
+                            "\n=== HISTORICO ===");
 
                     System.out.println(
                             pedido.obterHistorico());
@@ -213,7 +220,7 @@ public class Main {
                 default:
 
                     System.out.println(
-                            "\nOpção inválida.");
+                            "\nOpcao invalida.");
             }
         }
 
