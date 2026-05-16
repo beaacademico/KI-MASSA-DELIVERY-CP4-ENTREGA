@@ -14,6 +14,8 @@ public class Main {
 
     public static void main(String[] args) {
 
+        System.setProperty("file.encoding", "UTF-8");
+
         Scanner sc = new Scanner(System.in);
 
         CalculadoraPedido calc =
@@ -29,6 +31,7 @@ public class Main {
         while (opcao != 5) {
 
             System.out.println("\n===== KI MASSA =====");
+
             System.out.println("1 - Criar pedido");
             System.out.println("2 - Atualizar status");
             System.out.println("3 - Ver pedido");
@@ -36,6 +39,7 @@ public class Main {
             System.out.println("5 - Sair");
 
             System.out.print("Escolha uma opção: ");
+
             opcao = sc.nextInt();
             sc.nextLine();
 
@@ -103,7 +107,8 @@ public class Main {
                             pedido,
                             entregador);
 
-                    System.out.println("\nPedido criado com sucesso!");
+                    System.out.println(
+                            "\nPedido criado com sucesso!");
 
                     break;
 
@@ -111,39 +116,55 @@ public class Main {
 
                     if (pedido == null) {
 
-                        System.out.println("\nNenhum pedido criado.");
+                        System.out.println(
+                                "\nNenhum pedido criado.");
+
                         break;
                     }
 
-                    System.out.println("\n=== ATUALIZAR STATUS ===");
+                    System.out.println(
+                            "\n=== ATUALIZAR STATUS ===");
 
                     System.out.println("1 - Em preparo");
                     System.out.println("2 - Saiu para entrega");
                     System.out.println("3 - Entregue");
 
                     System.out.print("Escolha: ");
+
                     int status = sc.nextInt();
                     sc.nextLine();
 
                     switch (status) {
 
                         case 1:
-                            pedido.atualizarStatus("Em preparo");
+
+                            pedido.atualizarStatus(
+                                    "Em preparo");
+
                             break;
 
                         case 2:
-                            pedido.atualizarStatus("Saiu para entrega");
+
+                            pedido.atualizarStatus(
+                                    "Saiu para entrega");
+
                             break;
 
                         case 3:
-                            pedido.atualizarStatus("Entregue");
+
+                            pedido.atualizarStatus(
+                                    "Entregue");
+
                             break;
 
                         default:
-                            System.out.println("Status inválido.");
+
+                            System.out.println(
+                                    "Status inválido.");
                     }
 
-                    System.out.println("Status atualizado!");
+                    System.out.println(
+                            "Status atualizado!");
 
                     break;
 
@@ -151,11 +172,14 @@ public class Main {
 
                     if (pedido == null) {
 
-                        System.out.println("\nNenhum pedido criado.");
+                        System.out.println(
+                                "\nNenhum pedido criado.");
+
                         break;
                     }
 
-                    System.out.println("\n=== DADOS DO PEDIDO ===");
+                    System.out.println(
+                            "\n=== DADOS DO PEDIDO ===");
 
                     pedido.exibirPedido();
 
@@ -165,11 +189,14 @@ public class Main {
 
                     if (pedido == null) {
 
-                        System.out.println("\nNenhum pedido criado.");
+                        System.out.println(
+                                "\nNenhum pedido criado.");
+
                         break;
                     }
 
-                    System.out.println("\n=== HISTÓRICO ===");
+                    System.out.println(
+                            "\n=== HISTÓRICO ===");
 
                     System.out.println(
                             pedido.obterHistorico());
@@ -178,13 +205,15 @@ public class Main {
 
                 case 5:
 
-                    System.out.println("\nSistema encerrado.");
+                    System.out.println(
+                            "\nSistema encerrado.");
 
                     break;
 
                 default:
 
-                    System.out.println("\nOpção inválida.");
+                    System.out.println(
+                            "\nOpção inválida.");
             }
         }
 
