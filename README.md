@@ -170,7 +170,7 @@ java -cp out br.com.kimassa.Main
 
 🎥 Vídeo de apresentação:
 
-[:contentReference[oaicite:0]{index=0}](https://www.youtube.com/watch?v=f9k7xcCl0jg)
+[KIMASSA PROJECT SHOWTIME!!!](https://www.youtube.com/watch?v=f9k7xcCl0jg)
 
 ---
 
