@@ -8,6 +8,9 @@ public class GerenciadorEntrega {
     public void atribuirEntregador(Pedido pedido,
                                    Entregador entregador) {
 
+        System.out.println(
+                "\n=== GERENCIADOR DE ENTREGA ===");
+
         if (entregador.isDisponivel()) {
 
             entregador.setDisponivel(false);
@@ -17,7 +20,10 @@ public class GerenciadorEntrega {
 
             System.out.println(
                     "Entregador atribuído: "
-                    + entregador.getNome());
+                            + entregador.getNome());
+
+            System.out.println(
+                    "Pedido saiu para entrega!");
 
         } else {
 
